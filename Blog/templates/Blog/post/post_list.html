@@ -1,0 +1,21 @@
+{% extends "Blog/base.html" %}
+{% load blog_tags %}
+{% block title %}Vigente`{% endblock %}
+{% block content %}
+<h1>Vigente`</h1>
+<hr/>
+{% for post in post %}
+    <h2>
+        <a href="{{ post.get_absolute_url }}">
+            {{ post.title }}
+        </a>
+    </h2>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    {{ post.body|markdown|truncatewords_html:30 }}
+    
+{% endfor %}
+    {% include "pagination.html" with page=post%}
+{% endblock %}
+    

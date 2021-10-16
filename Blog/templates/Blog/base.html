@@ -1,0 +1,34 @@
+{% load blog_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+</head>
+<body>
+    <div id="content">
+        
+        
+       
+        {% block content %}
+        
+        
+
+        {% endblock %}
+    </div>
+    <hr>
+    <div id="sidebar">
+        <h2>Total Post</h2>
+        <p><em></em>Total Blogs: {% total_post %}</em> </p>
+        <h3>Latest Post</h3>
+        <p> {% show_latest_post 3 %} </p>
+        <p> <a href="{% url 'Blog:post_feed' %}">Subcribe for new Post</a>
+        </p>
+                
+    </div>
+   
+</body>
+
+</html>
