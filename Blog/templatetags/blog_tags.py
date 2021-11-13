@@ -3,6 +3,7 @@ from ..models import Post
 from django.db.models import Count
 from django.utils.safestring import mark_safe
 import markdown
+import calendar
 register = template.Library()
 
 
@@ -30,3 +31,8 @@ def markdown_format(text):
 def get_most_commented_posts(count=5):
     return Post.published.annotate(
         total_comments=Count('comments')).order_by('-total_comments')[:count]
+
+@register.filter
+def month_name(month_number):
+    month_number = int(month_number)
+    return calendar.month_name[month_number]
