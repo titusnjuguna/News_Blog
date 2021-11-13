@@ -1,7 +1,22 @@
-<ul>
+{% load static %}
+<ul class="list-unstyled mb-0">
     {% for post in latest_post %}
-    <li>
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    <li class="d-flex mb-3 pb-1">
+        <article class="d-flex">
+            <a href="{{ post.get_absolute_url }}">
+                <img class="me-3 rounded-circle" src="{{post.image.url}}"
+                    alt="The post image" style="max-width: 70px;">
+            </a>
+            <div class="media-body">
+                <a href="#">
+                    <h4 class="text-color-default font-weight-normal line-height-6 text-3 opacity-8 ls-0 mb-1">
+                        <p> {{post.title}}</p>
+                    </h4>
+                    <p class="text-2 mb-0">{{post.publish}}</p>
+                </a>
+            </div>
+        </article>
     </li>
     {% endfor %}
+    
 </ul>

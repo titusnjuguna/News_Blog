@@ -1,11 +1,673 @@
-{% extends "Blog/base.html" %}
-{% load blog_tags %}
-{% block title %}{{ post.title }}{% endblock %}
-{% block content %}
-<h1>{{ post.title }}</h1>
-<p class="date">
-    Published {{ post.publish }} by {{ post.author }}
-</p>
-{{ post.body|markdown }}
+{% extends "Blog/navbar.html" %}
+{% block content%}
 
+<head>
+        {% load static %}
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bonsoir</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap"
+        rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/animate/animate.compat.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.min.css'%}">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'css/theme.css'%}">
+    <link rel="stylesheet" href="{% static 'css/theme-elements.css'%}">
+    <link rel="stylesheet" href="{% static 'css/theme-blog.css'%}">
+    <link rel="stylesheet" href="{% static 'css/theme-shop.css'%}">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="{% static 'css/skins/default.css'%}">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+
+    <!-- Head Libs -->
+    <script src="{% static 'vendor/modernizr/modernizr.min.js'%}"></script>
+
+</head>
+
+<body data-plugin-page-transition>
+
+    <div class="body">
+        <!--header id="header" class="header-effect-shrink"
+            data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+            <div class="header-body border-top-0">
+                <div class="header-container container-fluid px-lg-4">
+                    <div class="header-row">
+                        <div class="header-column header-column-border-right flex-grow-0">
+                            <div class="header-row pe-4">
+                                <div class="header-logo">
+                                    <a href="index.html">
+                                        <img alt="Porto" width="100" height="48" data-sticky-width="82"
+                                            data-sticky-height="40" src="img/logo-default-slim.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="header-column">
+                            <div class="header-row">
+                                <div class="header-nav header-nav-links justify-content-center">
+                                    <div
+                                        class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                                        <nav class="collapse header-mobile-border-top">
+                                            <ul class="nav nav-pills" id="mainNav">
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="index.html">
+                                                        Home
+                                                    </a>
+                                                    
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle active" href="#">
+                                                        Advertise
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Large Image</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-large-image-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-large-image-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-large-image-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-large-image-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Medium Image</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-medium-image-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-medium-image-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Grid</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-4-columns.html">4 Columns</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-3-columns.html">3 Columns</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-full-width.html">Full Width</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-no-margins.html">No Margins</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-no-margins-full-width.html">No
+                                                                        Margins Full Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-grid-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Masonry</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-4-columns.html">4 Columns</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-3-columns.html">3 Columns</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-no-margins.html">No
+                                                                        Margins</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-no-margins-full-width.html">No
+                                                                        Margins Full Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-masonry-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Timeline</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-timeline.html">Full Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-timeline-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-timeline-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Single Post</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item" href="blog-post.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-slider-gallery.html">Slider
+                                                                        Gallery</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-image-gallery.html">Image
+                                                                        Gallery</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-embedded-video.html">Embedded
+                                                                        Video</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-html5-video.html">HTML5
+                                                                        Video</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-blockquote.html">Blockquote</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-link.html">Link</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-embedded-audio.html">Embedded
+                                                                        Audio</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-small-image.html">Small
+                                                                        Image</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Post Comments</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post.html#comments">Default</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-comments-facebook.html#comments">Facebook
+                                                                        Comments</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="blog-post-comments-disqus.html#comments">Disqus
+                                                                        Comments</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle" href="#">
+                                                        Shop
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">Single Product</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-product-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-product-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-product-sidebar-right.html">Right
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-product-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a class="dropdown-item" href="shop-4-columns.html">4
+                                                                Columns</a></li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">3 Columns</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-3-columns-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-3-columns-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-3-columns-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">2 Columns</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-2-columns-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-2-columns-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-2-columns-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-2-columns-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="dropdown-submenu">
+                                                            <a class="dropdown-item" href="#">1 Column</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-1-column-full-width.html">Full
+                                                                        Width</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-1-column-sidebar-left.html">Left
+                                                                        Sidebar</a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-1-column-sidebar-right.html">Right
+                                                                        Sidebar </a></li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="shop-1-column-sidebar-left-and-right.html">Left
+                                                                        and Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a class="dropdown-item" href="shop-cart.html">Cart</a></li>
+                                                        <li><a class="dropdown-item" href="shop-login.html">Login</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                                href="shop-checkout.html">Checkout</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="shop-order-complete.html">Order Complete</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-column header-column-border-left flex-grow-0 justify-content-center">
+                            <div class="header-row ps-4 justify-content-end">
+                                <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean m-0">
+                                    <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank"
+                                            title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank"
+                                            title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank"
+                                            title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                                <button class="btn header-btn-collapse-nav ms-0 ms-sm-3" data-bs-toggle="collapse"
+                                    data-bs-target=".header-nav-main nav">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header-->
+
+        <div role="main" class="main">
+
+            <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
+                <div class="container">
+                    <div class="row">
+                            <img src="{{post.image.url}}" />
+                        <!--div class="col-md-12 align-self-center p-static order-2 text-center">
+                            <h1 class="text-dark font-weight-bold text-8">Post Full Width</h1>
+                            <span class="sub-title text-dark">Check out our Latest News!</span>
+                        </div-->
+                        <!--div class="col-md-12 align-self-center order-1">
+                            <ul class="breadcrumb d-block text-center">
+                                <li><a href="#">Home</a></li>
+                                <li class="active">Blog</li>
+                            </ul>
+                        </div-->
+                    </div>
+                </div>
+            </section>
+
+            <div class="container py-4">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="blog-posts single-post">
+
+                            <article class="post post-large blog-single-post border-0 m-0 p-0">
+                                <div class="post-image ms-0">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/wide/blog-11.jpg"
+                                            class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                    </a>
+                                </div>
+
+                                <div class="post-date ms-0">
+                                    <span class="day">12</span>
+                                    <span class="month">Jan</span>
+                                </div>
+
+                                <div class="post-content ms-0">
+
+                                    <h2 class="font-weight-semi-bold"><a href="blog-post.html">{{post.title}}
+                                            </a></h2>
+
+                                    <div class="post-meta">
+                                        <span><i class="far fa-user"></i> By <a href="#">{{post.author}}</a> </span>
+                                        <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a
+                                                href="#">Design</a> </span>
+                                        <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
+                                    </div>
+                                    <p>{{post.body}}</p>
+
+         
+
+                                    <div class="post-block mt-5 post-share">
+                                        <h4 class="mb-3">Share this Post</h4>
+
+                                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                        <div class="addthis_inline_share_toolbox"></div>
+                                        <script type="text/javascript"
+                                            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60ba220dbab331b0"></script>
+
+                                    </div>
+
+                                    <div class="post-block mt-4 pt-2 post-author">
+                                        <h4 class="mb-3">Author</h4>
+                                        <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                            <a href="blog-post.html">
+                                                <img src="{% static 'img/avatars/avatar.jpg'%}" alt="" style="border:0.5px solid black;border-radius:50%;">
+                                            </a>
+                                        </div>
+                                        <p><strong class="name"><a href="#" class="text-4 pb-2 pt-2 d-block">John
+                                                    Doe</a></strong></p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod
+                                            odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in
+                                            adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis
+                                            placerat, felis enim ornare nisi, vitae mattis nulla ante id dui. </p>
+                                    </div>
+                                    <div id="comments" class="post-block mt-5 post-comments">
+                                        <h4 class="mb-3">{% with comments.count as total_comments %}
+                                        <h2>
+                                                {{ total_comments }} comment{{ total_comments|pluralize }}
+                                        </h2>
+                                        {% endwith %}</h4>
+
+                                        <ul class="comments">
+                                                {% for comment in comments %}
+                                            <li>
+                                                <div class="comment">
+                                                    <div
+                                                        class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                        <img class="avatar" alt="" src="{% static 'img'%}">
+                                                    </div>
+                                                    <div class="comment-block">
+                                                        <div class="comment-arrow"></div>
+                                                        <span class="comment-by">
+                                                            <strong>John Doe</strong>
+                                                            <span class="float-end">
+                                                                <span> <a href="#"><i class="fas fa-reply"></i>
+                                                                        Reply</a></span>
+                                                            </span>
+                                                        </span>
+                                                        <p> Comment {{ forloop.counter }} by {{ comment.name }}
+                                                                        {{ comment.created }}
+                                                                </p>
+                                                       
+                                                        
+                                                        <p>{{ comment.body|linebreaks }}</p>                                               
+                                                                
+                                                        
+                                                        {% empty %}
+                                                        <p>There are no comments yet.</p>
+                                                        {% endfor %}
+                                                        <span class="date float-end">January 12, 2021 at 1:38 pm</span>
+                                                    </div>
+                                                </div>
+                                        </li>
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="post-block mt-5 post-leave-comment">
+                                        <h4 class="mb-3">Leave a comment</h4>
+                                        {% if new_comment %}
+                                        <h2>Your comment has been added.</h2>
+                                        {% else %}
+                                        <h2>Add a new comment</h2>
+                                         
+                                        
+
+                                        <form class="contact-form p-4 rounded bg-color-grey"
+                                             method="POST">
+                                             <div class="p-2">
+                                                     <div class="row">
+                                                             <div class="form-group col-lg-6">
+                                                                     {{ comment_form.as_p }}
+                                                                     {% csrf_token %}
+                                                              </div>
+                                                        </div>
+                                                </div>
+
+                                             <div class="row">
+                                                    <div class="form-group col mb-0">
+                                                            <input type="submit" value="Post Comment" class="btn btn-primary btn-modern" data-loading-text="Loading...">
+                                                    </div>        
+                                             </div>
+                                        </form>
+                                        {% endif %}
+                                       
+                                    </div>
+
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-ribbon">
+                    <span>Get in Touch</span>
+                </div>
+                <div class="row py-5 my-4">
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                        <h5 class="text-3 mb-3">ABOUT THE BLOG</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu pulvinar magna semper
+                            scelerisque.</p>
+                        <p class="mb-2">Praesent venenatis turpis vitae purus semper, eget sagittis velit venenatis
+                            ptent taciti sociosqu ad litora...</p>
+                        <p class="mb-0"><a href="#" class="btn-flat btn-xs text-color-light p-relative top-5"><strong
+                                    class="text-2">VIEW MORE</strong><i
+                                    class="fas fa-angle-right p-relative top-1 ps-2"></i></a></p>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <h5 class="text-3 mb-3">RECENT POSTS</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex mb-3 pb-1">
+                                <article class="d-flex">
+                                    <a href="#">
+                                        <img class="me-3 rounded-circle" src="img/office/our-office-4-square.jpg" alt=""
+                                            style="max-width: 70px;">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <h6 class="text-3 text-color-light opacity-8 ls-0 mb-1">Lorem ipsum dolor
+                                                sit, consectetur adipiscing elit.</h6>
+                                            <p class="text-2 mb-0">12:53 AM Dec 19th</p>
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                            <li class="d-flex">
+                                <article class="d-flex">
+                                    <a href="#">
+                                        <img class="me-3 rounded-circle" src="img/office/our-office-5-square.jpg" alt=""
+                                            style="max-width: 70px;">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <h6 class="text-3 text-color-light opacity-8 ls-0 mb-1">Lorem ipsum dolor
+                                                sit, consectetur adipiscing elit.</h6>
+                                            <p class="text-2 mb-0">12:53 AM Dec 19th</p>
+                                        </a>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-5 mb-md-0">
+                        <h5 class="text-3 mb-3">RECENT COMMENTS</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 pb-1">
+                                <a href="#">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i
+                                            class="fas fa-angle-right text-color-primary"></i><strong class="ms-2">John
+                                            Doe</strong> commented on <strong class="text-color-primary">lorem ipsum
+                                            dolor sit amet.</strong></p>
+                                    <p class="text-2 mb-0">12:55 AM Dec 19th</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i
+                                            class="fas fa-angle-right text-color-primary"></i><strong class="ms-2">John
+                                            Doe</strong> commented on <strong class="text-color-primary">lorem ipsum
+                                            dolor sit amet.</strong></p>
+                                    <p class="text-2 mb-0">12:55 AM Dec 19th</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <h5 class="text-3 mb-3">CATEGORIES</h5>
+                        <p>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Gadgets</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Photography</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Lifestyle</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Fashion</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Recipes</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Travel</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Business</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Architecture</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Reviews</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Sports</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Videos</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Technology</span></a>
+                            <a href="#"><span
+                                    class="badge badge-dark bg-color-black badge-sm py-2 me-1 mb-2 text-uppercase">Design</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container py-2">
+                    <div class="row py-4">
+                        <div
+                            class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+                            <a href="index.html" class="logo pe-0 pe-lg-3">
+                                <img alt="Porto Website Template" src="img/logo-footer.png" class="opacity-5"
+                                    height="32">
+                            </a>
+                        </div>
+                        <div
+                            class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+                            <p>© Copyright 2021. All Rights Reserved.</p>
+                        </div>
+                        <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <nav id="sub-menu">
+                                <ul>
+                                    <li><i class="fas fa-angle-right"></i><a href="page-faq.html"
+                                            class="ms-1 text-decoration-none"> FAQ's</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="sitemap.html"
+                                            class="ms-1 text-decoration-none"> Sitemap</a></li>
+                                    <li><i class="fas fa-angle-right"></i><a href="contact-us.html"
+                                            class="ms-1 text-decoration-none"> Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Vendor -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="vendor/lazysizes/lazysizes.min.js"></script>
+    <script src="vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/vide/jquery.vide.min.js"></script>
+    <script src="vendor/vivus/vivus.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="js/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="js/theme.init.js"></script>
 {% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+{% for post in latest_post_car %}
+<div class="owl-item position-relative overlay overlay-show overlay-op-3">
+    <a href="blog-post.html" class="text-decoration-none">
+        <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0"
+            style=" background-size: cover; background-position: center;background-image:url('{{post.image.url}}');">
+            
+        </div>
+        <div class="container position-relative z-index-3 h-100">
+            <div class="row justify-content-center align-items-end h-100">
+                <div class="col pb-2 mb-4 appear-animation" data-appear-animation="fadeInDownShorter">
+                    {% for tag in post.tags.all %}
+                    <span class="badge badge-dark bg-color-primary badge-sm text-uppercase">{{ tag.name }}</span>
+                    {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    <h2 class="text-light text-9 font-weight-bold mb-2">{{post.title}}</h2>
+                    <p class="text-light opacity-6 text-4">{{post.body|truncatewords:40 }}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
