@@ -245,6 +245,12 @@
 						<div class="col-md-6 col-lg-2">
 							<h3 class="text-3 text-dark mb-3 font-weight-bold">CATEGORIES</h3>
 							<p>
+								{% for tag in post.tags.all %}
+								<a href="{% url "Blog:post_list_by_tag" tag.slug %}"><span class="badge badge-dark bg-color-primary badge-sm py-2 me-1 mb-2 text-uppercase">{{tag.name}}</span></a>
+									
+								
+								{% endfor %}
+								
 
 								<a href="#"><span class="badge badge-dark bg-color-primary badge-sm py-2 me-1 mb-2 text-uppercase">Gadgets</span></a>
 

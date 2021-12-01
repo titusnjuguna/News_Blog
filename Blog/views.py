@@ -5,6 +5,7 @@ from django.contrib.postgres.search import SearchVector
 from .forms import SearchForm,EmailPostForm,CommentForm
 from django.core.mail import send_mail
 from .models import Post,Comment
+import requests
 from taggit.models import Tag
 
 

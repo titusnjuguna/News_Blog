@@ -27,6 +27,8 @@
     <link id="googleFonts"
         href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CShadows+Into+Light&display=swap"
         rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
@@ -399,9 +401,9 @@
                                                 href="#">Design</a> </span>
                                         <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
                                     </div>
-                                    <p>{{post.body}}</p>
+                                    <p style="width:80%;">{{post.body}}</p>
 
-         
+                                            
 
                                     <div class="post-block mt-5 post-share">
                                         <h4 class="mb-3">Share this Post</h4>
@@ -415,7 +417,7 @@
 
                                     <div class="post-block mt-4 pt-2 post-author">
                                         <h4 class="mb-3">Author</h4>
-                                        <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                        <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3" id="social">
                                             <a href="blog-post.html">
                                                 <img src="{% static 'img/avatars/avatar.jpg'%}" alt="" style="border:0.5px solid black;border-radius:50%;">
                                             </a>
