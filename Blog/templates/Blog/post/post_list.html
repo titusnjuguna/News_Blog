@@ -13,18 +13,15 @@
         <div class="card">
             <img src="{{post.image.url}}" style="width:100%;height:200px;">
             <div class="card-body">
-                <h3><a href="{{post.get_absolute_url}}">{{post.title}}</h3>
-                <p>{{ post.body|markdown|truncatewords_html:25 }}</p>
+                <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+                <p style='text-decoration:none;text-align: left;'>{{post.body|markdown|truncatewords_html:25}}</p>
                 <div class="post-meta">
                     <span><i class="far fa-user"></i> By <a href="#">{{post.author}}</a> </span>
-                
-                
-                
                     {% for tag in post.tags.all %}
                     <span><i class="far fa-folder"></i> <a href="{% url 'Blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a></span>
                     {% if not forloop.last %}, {% endif %}
                     {% endfor %}
-                    <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
+                    <span><i class="far fa-comments"></i><a href="#">12 Comments</a></span>
                     <span class="d-block mt-2"><a href="{{ post.get_absolute_url }}"
                             class="btn btn-xs btn-light text-1 text-uppercase">Read
                             More</a></span>

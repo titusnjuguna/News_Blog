@@ -148,8 +148,20 @@
 							<div class="col pt-2 text-center text-lg-start text-center">
 								<h3 class="text-3 text-dark m-0 font-weight-bold d-inline-block pe-4 mb-3">BROWSE ALL CATEGORIES:</h3>
 								<div class="d-inline-block">
+									{% for tag in post.tags.all %}
+									<a href="{% url 'Blog:post_list_by_tag' tag.slug %}"class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">{{ tag.name }}</a>
+									{% if not forloop.last %}, {% endif %}
+									{% endfor %}
 
-									<a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">International</a>
+
+
+
+
+
+
+									
+
+									<!--a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">International</a>
 
 									<a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">Photography</a>
 
@@ -161,7 +173,7 @@
 
 									<a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">Travel</a>
 
-									<a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">Business</a>
+									<a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold me-2 mb-2">Business</a-->
 
 								</div>
 							</div>

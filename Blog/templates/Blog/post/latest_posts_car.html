@@ -13,8 +13,8 @@
                     <span class="badge badge-dark bg-color-primary badge-sm text-uppercase">{{ tag.name }}</span>
                     {% if not forloop.last %}, {% endif %}
                     {% endfor %}
-                    <h2 class="text-light text-9 font-weight-bold mb-2">{{post.title}}</h2>
-                    <p class="text-light opacity-6 text-4">{{post.body|truncatewords:40 }}</p>
+                    <h2 class="text-light text-9 font-weight-bold mb-2">{{post.title|capfirst}}</h2>
+                    
                 </div>
             </div>
         </div>
