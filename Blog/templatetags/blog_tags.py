@@ -1,7 +1,8 @@
 from django import template
-from ..models import Post
+from ..models import Post,Comment
 from django.db.models import Count
 from django.utils.safestring import mark_safe
+from django.shortcuts import render, get_object_or_404
 import markdown
 import calendar
 register = template.Library()

@@ -399,7 +399,9 @@
                                         <span><i class="far fa-user"></i> By <a href="#">{{post.author}}</a> </span>
                                         <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a
                                                 href="#">Design</a> </span>
-                                        <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
+                                                {% with comments.count as total_comments %}
+                                        <span><i class="far fa-comments"></i> <a href="#">{{ total_comments }} comment{{ total_comments|pluralize }}</a></span>
+                                        {% endwith %}
                                     </div>
                                     <p style="width:80%;">{{post.body}}</p>
 
@@ -430,7 +432,8 @@
                                             placerat, felis enim ornare nisi, vitae mattis nulla ante id dui. </p>
                                     </div>
                                     <div id="comments" class="post-block mt-5 post-comments">
-                                        <h4 class="mb-3">{% with comments.count as total_comments %}
+                                        <h4 class="mb-3">
+                                            {% with comments.count as total_comments %}
                                         <h2>
                                                 {{ total_comments }} comment{{ total_comments|pluralize }}
                                         </h2>

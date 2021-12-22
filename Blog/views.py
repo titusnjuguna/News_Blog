@@ -14,6 +14,7 @@ def home(request):
 
 def post_list(request,tag_slug=None):
     posts_all = Post.published.all()
+    
     paginator = Paginator(posts_all, 6)
     page = request.GET.get('page')
     tag = None
@@ -29,7 +30,7 @@ def post_list(request,tag_slug=None):
         # If page is out of range deliver last page of results
         post = paginator.page(paginator.num_pages)
 
-    return render(request, 'Blog/post/post_list.html', {'page': page,'tag':tag,
+    return render(request, 'Blog/post/post_list.html', {'page': page,'tag':tag, 
                                                         'post': post})
 
 
