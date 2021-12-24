@@ -7,11 +7,17 @@ from django.core.mail import send_mail
 from .models import Post,Comment
 import requests
 from taggit.models import Tag
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
 
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
+@cache_page(CACHE_TTL)
 def home(request):
     return render(request,'Blog/base.html')
 
+@cache_page(CACHE_TTL)
 def post_list(request,tag_slug=None):
     posts_all = Post.published.all()
     
@@ -34,6 +40,7 @@ def post_list(request,tag_slug=None):
                                                         'post': post})
 
 
+@cache_page(CACHE_TTL)
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,
                              status='published',
