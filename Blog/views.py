@@ -2,7 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector
-from .forms import SearchForm,EmailPostForm,CommentForm
+from .forms import SearchForm,EmailPostForm,CommentForm,StoryForm
 from django.core.mail import send_mail
 from .models import Post,Comment
 import requests
@@ -100,3 +100,8 @@ def Search_post(request):
 
 def contact(request):
     return render(request,'Blog/contact-us.html') 
+
+def shareContent(request):
+    if request.method == 'POST':
+        form = StoryForm()
+    return render(request,'Blog/Share_story.html',{'form':form})

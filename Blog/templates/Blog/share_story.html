@@ -1,0 +1,10 @@
+{% extends "Blog/base.html" %}
+{% block title %} Share Story{% endblock title %}
+{% block content %}
+
+<form method="POST">
+{{form.as_p}}
+<input value="submit"/>
+</form>
+
+{% endblock content %}

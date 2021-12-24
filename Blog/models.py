@@ -65,3 +65,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.name} on {self.post}'    
+
+class Story(models.Model):
+    title = models.CharField(max_length= 40)
+    body = models.TextField()
+    contact = models.EmailField(max_length= 50)
+
+    def __str__(self):
+        return self.title
+    

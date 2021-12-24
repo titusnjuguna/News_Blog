@@ -13,4 +13,5 @@ urlpatterns = [
     path('search/', views.Search_post, name='post_search'),
     path('tag/<slug:tag_slug>/', views.post_list, name='post_list_by_tag'),
     path('contact/', views.contact, name='contact'),
+    path('Share_story/', views.shareContent, name='content'),
 ]
