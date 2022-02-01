@@ -1,2 +1,2 @@
-# News_Blog
-A full-featured  News blog 
+# Access
+- Switch to the master branch
