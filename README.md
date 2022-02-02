@@ -30,11 +30,20 @@ Source env/bin/activate
 ```
 - Install Project dependecies
 ```
-pip install 
+pip install -r requirements.txt  
 ```
 
-## Deployment
+## Running test
+- Start the local server 
+```
+python manage runserver
+```
+- Open your favourite browser and open the following link 
+    
+       http://localhost:8000/
 
+## Deployment
+The project was deployed on Heroku . Follow this ![guide](https://devcenter.heroku.com/articles/deploying-python) to deploy
 
 
 ## License
