@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from tkinter import FALSE
 import dj_database_url
 from dotenv import load_dotenv
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^48#$s!zt4q4=c4^!e6i+emmugujh(ad5nj@t3!w8k74j0_mz-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = FALSE
 
-ALLOWED_HOSTS = ['127.0.0.1','bonsoir-news.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','https://bonsoirnews.herokuapp.com','localhost']
 
 SITE_ID = 1
 # Application definition
@@ -165,3 +168,5 @@ EMAIL_USE_TLS = True
 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+# Activating django_heroku
