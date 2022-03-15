@@ -14,7 +14,7 @@ from pathlib import Path
 from tkinter import FALSE
 import dj_database_url
 from dotenv import load_dotenv
-
+import django_on_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -170,3 +170,4 @@ prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 # Activating django_heroku
+django_on_heroku.settings(locals())
