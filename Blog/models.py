@@ -1,11 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE
-from django.forms.models import model_to_dict
 from django.utils import timezone
-from django.urls import reverse
 from taggit.managers import TaggableManager
-from PIL import Image
+from django.urls import reverse
+
 
 
 class PublishedManager(models.Manager):
