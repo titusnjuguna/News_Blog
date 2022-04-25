@@ -6,7 +6,7 @@ It is a full-featured News blog with the following features:
 - RSS feeds
 e.t.c
 
-##Preview
+## Preview
 
 
 ## Getting Started
