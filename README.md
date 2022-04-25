@@ -6,6 +6,9 @@ It is a full-featured News blog with the following features:
 - RSS feeds
 e.t.c
 
+##Preview
+
+
 ## Getting Started
 - Open your terminal and navigate to you project directory 
 - Clone the repo into your local machine 
