@@ -10,11 +10,22 @@ from taggit.models import Tag
 from django.conf import settings
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.views.decorators.cache import cache_page
+import http.client,urllib.parse
+
+conn = http.client.HTTPConnection('api.mediastack.com')
+params = urllib.parse.urlencode({
+    'access_key': 'ACCESS_KEY',
+    'categories': '-general,-sports,-politics',
+    'sort': 'published_desc',
+    'limit': 10,
+    })
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 @cache_page(CACHE_TTL)
 def home(request):
+    response = requests.get('https://jsonplaceholder.typicode.com/todos/')
+    news = response.json()
     return render(request,'Blog/base.html')
 
 @cache_page(CACHE_TTL)
